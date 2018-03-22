@@ -3,28 +3,37 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="aClimb.js"></script>
+   
     <meta charset="UTF-8">
-    
     <title>The Climb Challenge</title>
     <!-- the next line loads the tests for the Udacity Feedback extension -->
-   
-
-
 </head>
 
 <body>
- <div id="aClimb"><h2>The Climb Challenge</h2>
-    <div class="acSelect"> <h3>Select users</h3>
-     </div>
-     <div class="cDetails"> <h3>User Details</h3>
-     </div>   
-     <div class="acButtons"> <h3>Select Action</h3> 
-     </div>
-</div>       
+ <div id="navbar"><h1>THE CLIMB CHALLENGE</h1></div>   
+ <div id="aClimb"><h2>Welcome to The Climb Challenge</h2>
+        <div class="acSelect">
+            <h3>Select Contact</h3>
+        </div>
+
+    <div class="eContact"><h3>Enter Contact Details</h3>
+        <form id="enterDetails">
+            <b>First Name   :</b> <input name="fName" type="Text" size = "20"> <br/><br/>
+            <b>Last Name    :</b>  <input name="lName" type="Text" size="20"> <br/><br/>
+            <b>Age          :</b>  <input name="Age" type="number" size="3"> <br/><br/>
+            <b>Address      :</b>  <input name="Address" type="Text" size="40"> <br/><br/>
+            <b>Telephone Num:</b>  <input name="TelNO" type="Text" size="15"> <br/><br/>
+            <b>Email Address:</b> <input name="emailAddr" type="Text" size="20"> <br/><br/>
+        <button onclick="subDetail()">Submit Details</button>
+        </form>
+    </div>
+    <div class="cDetails hide"> <h3>Display Contact Details</h3></div>   
+    <div class="acButtons hide"> <h3>Select Action</h3> </div>
+ </div>       
     
     <p> </p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="aClimb.js"></script>
 </body>
 
 </html>
