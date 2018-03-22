@@ -1,0 +1,39 @@
+
+#aClimb {
+         background-color: powderblue;
+        color: rgb(62, 68, 77);
+        height: 0,auto;
+        width: 50%,auto;
+        border-style: solid;
+        padding: 10,10,10,10;
+        margin: 10;
+
+}
+
+
+.acSelect {
+        background-color: rgb(176, 230, 176);
+        height: 50;
+        width: 20%;
+        border-style: solid;
+        margin: 10;
+        padding: 10,10,10,10;
+        
+}
+.cDetails {
+        background-color: rgb(230, 176, 227);
+        height: 10;
+        width: 20%;
+          border-style: solid;
+        margin: 10;
+        padding: 10,10,10,10;
+
+}
+.acButtons {
+        background-color: rgb(230, 176, 227);
+        height: 50;
+        width: 20%;
+        border-style: solid;
+        margin: 10;
+
+}
