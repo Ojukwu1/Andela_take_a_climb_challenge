@@ -24,19 +24,17 @@ body {
         margin: 10;
         display: inline-block;
         float: none;
-
 }
 
 .eContact {
         background-color: rgb(176, 230, 176);
-        height: 50;
+        height: auto;
         width: auto;
         border-style: solid;
         margin: 10;
         padding: 10,10,10,10;
         display: block;
         float: right;
-
 }
 .acSelect {
         background-color: rgb(176, 230, 176);
@@ -47,8 +45,7 @@ body {
         padding: 10,10,10,10;
         display: block;
         float: left;
-
-        
+     
 }
 .cDetails {
         background-color: rgb(230, 176, 227);

@@ -3,37 +3,109 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-   
+
     <meta charset="UTF-8">
     <title>The Climb Challenge</title>
     <!-- the next line loads the tests for the Udacity Feedback extension -->
 </head>
 
 <body>
- <div id="navbar"><h1>THE CLIMB CHALLENGE</h1></div>   
- <div id="aClimb"><h2>Welcome to The Climb Challenge</h2>
+    <div id="navbar">
+        <h1>THE CLIMB CHALLENGE</h1>
+    </div>
+    <div id="aClimb">
+        <h2>Welcome to The Climb Challenge</h2>
         <div class="acSelect">
             <h3>Select Contact</h3>
+            <select id="acSelect">
+                             
+            </select>
+            <button onclick="editContact()">Edit</button>
+            <button onclick="removeContact()">Remove</button>
         </div>
 
-    <div class="eContact"><h3>Enter Contact Details</h3>
-        <form id="enterDetails">
-            <b>First Name   :</b> <input name="fName" type="Text" size = "20"> <br/><br/>
-            <b>Last Name    :</b>  <input name="lName" type="Text" size="20"> <br/><br/>
-            <b>Age          :</b>  <input name="Age" type="number" size="3"> <br/><br/>
-            <b>Address      :</b>  <input name="Address" type="Text" size="40"> <br/><br/>
-            <b>Telephone Num:</b>  <input name="TelNO" type="Text" size="15"> <br/><br/>
-            <b>Email Address:</b> <input name="emailAddr" type="Text" size="20"> <br/><br/>
-        <button onclick="subDetail()">Submit Details</button>
-        </form>
+        <div class="eContact">
+            <h3 id='contactD'>Enter Contact Details</h3>
+            
+                <b>First Name :</b>
+                <input id="fName" name="fName" type="Text" size="20">
+                <br/>
+                <br/>
+                <b>Last Name :</b>
+                <input id="lName" name="lName" type="Text" size="20">
+                <br/>
+                <br/>
+                <b>Telephone Num:</b>
+                <input id="TelNO" name="TelNO" type="Text" size="15">
+                <br/>
+                <br/>
+                <button onclick="saveContact()">Submit Details</button>
+           
+        </div>
+       
     </div>
-    <div class="cDetails hide"> <h3>Display Contact Details</h3></div>   
-    <div class="acButtons hide"> <h3>Select Action</h3> </div>
- </div>       
-    
+
     <p> </p>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="aClimb.js"></script>
+     <!-- <script type="text/javascript" src="aClimb.js"></script> -->
+
+     <script>
+      // Saving form input
+        // Initializing a multi-dimentional array for conatact list
+
+        var newContact = 0;
+        var contact = [];
+
+        function saveContact() {
+            var firstName = fName.value;
+            var lastName = lName.value
+            var phoneNO = TelNO.value
+
+            var temp = [firstName, lastName, phoneNO];
+            contact.push(temp);
+            var cIndex = contact.length - 1;
+
+           // Populating select
+            var myList = document.getElementById("acSelect");
+            //alert(myList);
+
+            var option = document.createElement("option");
+            //alert(option);
+
+            //option.setAttribute("value", firstName);
+            option.value = firstName;
+            option.text = firstName;
+            myList.add(option);
+
+            // reseting form
+            fName.value = '';
+            lName.value = '';
+            TelNO.value = '';
+            
+}
+
+        function editContact() {
+                document.getElementById("contactD").innerHTML="Edit Contact Details";                 
+                var eCon = document.getElementById("acSelect");
+                var arrIndex = eCon.selectedIndex;
+                fName.value = contact[arrIndex][0];
+                lName.value = contact[arrIndex][1];
+                TelNO.value = contact[arrIndex][2];
+                
+            }    
+            
+        function removeContact() {
+            var rCon = document.getElementById("acSelect");
+            var arrIndex = rCon.selectedIndex;
+            var removedContact= contact.splice(arrIndex,1);
+            alert(removedContact+" removed from the list.");
+            rCon.remove(rCon.selectedIndex);
+            }
+      
+
+     
+    
+     </script>
+
 </body>
 
 </html>
