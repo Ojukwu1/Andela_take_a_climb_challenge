@@ -14,7 +14,7 @@
         <h1>THE CLIMB CHALLENGE</h1>
     </div>
     <div id="aClimb">
-        <h2>Welcome to The Climb Challenge</h2>
+        <h2>CONTACT LIST</h2>
         <div class="acSelect">
             <h3>Select Contact</h3>
             <select id="acSelect">
@@ -50,39 +50,61 @@
 
      <script>
       // Saving form input
-        // Initializing a multi-dimentional array for conatact list
+        // Initializing a multi-dimentional array for contact list
 
-        var newContact = 0;
         var contact = [];
+        var EditSave = false;
+        var rItem = 0; 
 
         function saveContact() {
+                       
+            // Saving new items   
             var firstName = fName.value;
-            var lastName = lName.value
-            var phoneNO = TelNO.value
+            var lastName = lName.value;
+            var phoneNO = TelNO.value;
+               
 
             var temp = [firstName, lastName, phoneNO];
-            contact.push(temp);
-            var cIndex = contact.length - 1;
-
-           // Populating select
-            var myList = document.getElementById("acSelect");
-            //alert(myList);
-
-            var option = document.createElement("option");
-            //alert(option);
-
-            //option.setAttribute("value", firstName);
-            option.value = firstName;
-            option.text = firstName;
-            myList.add(option);
+            if (EditSave) {
+                contact.splice(rItem,1,temp);
+                alert("Enter Edit Mode")
+            } else {
+                alert("Click Okay to save")
+                contact.push(temp);    
+            }
+            //var cIndex = contact.length - 1;
+            // Rebuilding select list 
+           EditSave = false;
+           buildList();
 
             // reseting form
             fName.value = '';
             lName.value = '';
             TelNO.value = '';
-            
+            document.getElementById("contactD").innerHTML = "Enter Contact Details";         
 }
 
+function buildList(){
+    alert("builder");
+    var myList = document.getElementById("acSelect");
+    for (var i = myList.options.length - 1; i >= 0; i--) {
+        myList.remove(i);
+    }
+    for (var j= 0; j <= contact.length -1; j++){
+
+     var option = document.createElement("option");
+    //alert(option);
+
+    //option.setAttribute("value", firstName);
+    option.value = contact[j][0];//firstName;/ /
+    option.text = contact[j][0];;
+    myList.add(option);
+    }
+    // Populating select
+    
+
+   
+}
         function editContact() {
                 document.getElementById("contactD").innerHTML="Edit Contact Details";                 
                 var eCon = document.getElementById("acSelect");
@@ -90,7 +112,11 @@
                 fName.value = contact[arrIndex][0];
                 lName.value = contact[arrIndex][1];
                 TelNO.value = contact[arrIndex][2];
-                
+                //contact[arrIndex].remove();
+                //buildList();
+                EditSave = true;
+                rItem = arrIndex;
+                return EditSave;
             }    
             
         function removeContact() {
@@ -99,6 +125,7 @@
             var removedContact= contact.splice(arrIndex,1);
             alert(removedContact+" removed from the list.");
             rCon.remove(rCon.selectedIndex);
+            buildList();
             }
       
 
